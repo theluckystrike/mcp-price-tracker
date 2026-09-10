@@ -1,13 +1,45 @@
 # mcp-price-tracker
 
+<!-- mirror-seo:start -->
+
+**MCP server for price tracking, a price tracker and price drop watcher for shop pages.** Check and watch product prices on ordinary shop pages.
+
+Works with Claude Desktop, Claude Code, Cursor and any Model Context Protocol client. Runs on your own machine, or hosted with no install.
+
+## Install
+
+**Hosted, nothing to install.** Point an MCP client at `https://mcp.zovo.one/mcp/price-tracker` over streamable-http and send `Authorization: Bearer <token>`, where the token is a Pro key or a free anonymous one from <https://mcp.zovo.one/mcp/token>.
+
+**Claude Desktop, one click.** Download `price-tracker.mcpb` from the [latest release](https://github.com/theluckystrike/mcp-servers/releases/latest) and double-click it.
+
+**From source.** The mirror is self-contained: every `@theluckystrike/*` dependency is vendored, so a fresh clone builds with no extra setup.
+
+```sh
+git clone https://github.com/theluckystrike/mcp-price-tracker.git
+cd mcp-price-tracker
+npm install && npm run build
+```
+
+Then point your client at the built entry point:
+
+```json
+{
+  "mcpServers": {
+    "price-tracker": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-price-tracker/dist/index.js"]
+    }
+  }
+}
+```
+
+> `@theluckystrike/mcp-price-tracker` is **not published on npm yet**, so an `npx -y @theluckystrike/mcp-price-tracker` command will fail. The three paths above are the working ones and each is exercised by CI.
+
 ![price-tracker demo](https://raw.githubusercontent.com/theluckystrike/mcp-servers/main/assets/demo-price-tracker.gif)
-
-**One-click install:** download `price-tracker.mcpb` from the [latest release](https://github.com/theluckystrike/mcp-servers/releases/latest) and double-click it in Claude Desktop.
-
-**Hosted endpoint (no install):** `https://mcp.zovo.one/mcp/price-tracker` (streamable-http; send `Authorization: Bearer <Pro key or anonymous token from https://mcp.zovo.one/mcp/token>`).
 
 Read-only mirror of [mcp-servers/servers/price-tracker](https://github.com/theluckystrike/mcp-servers/tree/main/servers/price-tracker). See [MIRROR.md](MIRROR.md).
 
+<!-- mirror-seo:end -->
 
 Ask your assistant what something costs right now. Point it at any product page and it reads the price off the page, remembers it, and tells you next time whether the price moved, how far, and whether it reached the number you were waiting for. It works on ordinary shop pages by reading the structured data most stores already publish (JSON-LD, Open Graph, microdata) and falling back to the visible price when they do not. When a large retailer blocks automated requests it says so plainly and lets you record the price yourself so the history stays intact. Everything is stored in a JSON file on your own machine.
 
