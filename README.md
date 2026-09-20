@@ -273,3 +273,5 @@ No. The only outbound requests are to the product URLs you add, to fetch their p
 telemetry and no account.
 
 MIT licensed.
+
+**Featured on [Awesome MCP Servers](mcpservers.org)** — [directory listing](https://mcpservers.org/servers/github-com-theluckystrike-mcp-servers-tree-main-servers-price-tracker) | [live hosted endpoint](https://mcp.zovo.one/s/price-tracker), free tier, no signup.
